@@ -1,7 +1,6 @@
 
 #include <vka/vka.h>
 #include <vbtallocman/vbtallocman.h>
-#include <allocman/allocman.h>
 #include <assert.h>
 
 static int _vbtallocman_cspace_alloc(void *alloc, seL4_CPtr *res)
