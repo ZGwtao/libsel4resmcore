@@ -49,8 +49,8 @@ static void _vbtallocman_utspace_free(void *alloc, seL4_Word type, seL4_Word siz
 
 }
 
-static int _vbtallocman_utspace_try_alloc_from_pool(void *alloc, cspacepath_t *dest, seL4_Word type,
-                          seL4_Word size_bits, uintptr_t paddr, bool can_use_dev, seL4_Word *res)
+static int _vbtallocman_utspace_try_alloc_from_pool(void *alloc, seL4_Word type, seL4_Word size_bits,
+                                                    uintptr_t paddr, bool can_use_dev, cspacepath_t *res)
 {
     /**
      * 1. use @arg *res to determine if it is from pool: res = -1 means from pool (no base untyped)
