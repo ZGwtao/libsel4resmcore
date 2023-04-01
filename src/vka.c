@@ -61,6 +61,11 @@ static int _vbtallocman_utspace_try_alloc_from_pool(void *alloc, seL4_Word type,
     return error;
 }
 
+static void _vbtallocman_utspace_try_free_from_pool(void *alloc, seL4_CPtr cptr)
+{
+    return;
+}
+
 static int _vbtallocman_cspace_is_from_pool(void *alloc, seL4_CPtr cptr)
 {
     int error;
@@ -91,5 +96,6 @@ void vbtallocman_make_vka(vka_t *vka, vbtallocman_t *alloc)
     
     vka->cspace_is_from_pool = &_vbtallocman_cspace_is_from_pool;
     vka->utspace_try_alloc_from_pool = &_vbtallocman_utspace_try_alloc_from_pool;
+    vka->utspace_try_free_from_pool = &_vbtallocman_utspace_try_free_from_pool;
 }
 
