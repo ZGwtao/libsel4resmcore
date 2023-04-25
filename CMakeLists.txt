@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.7.2)
 project(libsel4vbtallocman C)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
-set(LibVKAAllowMemoryPool ON CACHE BOOL "" FORCE)
 
 file(GLOB deps src/*.c)
 list(SORT deps)
