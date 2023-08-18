@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <autoconf.h>
 
-typedef struct vbtallocman {
+typedef struct resmcore {
 
     int have_mspace;
     //struct mspace_interface mspace;
@@ -15,5 +15,5 @@ typedef struct vbtallocman {
     int have_utspace;
     //struct utspace_interface utspace;
 
-} vbtallocman_t;
+} resmcore_t;
 
