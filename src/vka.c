@@ -3,54 +3,50 @@
 #include <resmcore/resmcore.h>
 #include <assert.h>
 
-static int _resmcore_cspace_alloc(void *alloc, seL4_CPtr *res)
+static int _resmcore_cspace_alloc(void *data, seL4_CPtr *res)
 {
     int error;
 
     return error;
 }
 
-static void _resmcore_cspace_make_path(void *alloc, seL4_CPtr slot, cspacepath_t *res)
+static void _resmcore_cspace_make_path(void *data, seL4_CPtr slot, cspacepath_t *res)
 {
 
 }
 
-static int _resmcore_utspace_alloc(void *alloc, const cspacepath_t *dest, seL4_Word type,
-                                                     seL4_Word size_bits, seL4_Word *res)
-{
-    int error;
-
-    return error;
-}
-
-static int _resmcore_utspace_alloc_maybe_device(void *alloc, const cspacepath_t *dest,
-               seL4_Word type, seL4_Word size_bits, bool can_use_dev, seL4_Word *res)
+static int _resmcore_utspace_alloc(void *data, const cspacepath_t *dest, seL4_Word type, seL4_Word size_bits, seL4_Word *res)
 {
     int error;
 
     return error;
 }
 
-static int _resmcore_utspace_alloc_at(void *alloc, const cspacepath_t *dest, seL4_Word type,
-                                      seL4_Word size_bits, uintptr_t paddr, seL4_Word *res)
+static int _resmcore_utspace_alloc_maybe_device(void *data, const cspacepath_t *dest, seL4_Word type, seL4_Word size_bits, bool can_use_dev, seL4_Word *res)
 {
     int error;
 
     return error;
 }
 
-static void _resmcore_cspace_free(void *alloc, seL4_CPtr slot)
+static int _resmcore_utspace_alloc_at(void *data, const cspacepath_t *dest, seL4_Word type, seL4_Word size_bits, uintptr_t paddr, seL4_Word *res)
+{
+    int error;
+
+    return error;
+}
+
+static void _resmcore_cspace_free(void *data, seL4_CPtr slot)
 {
 
 }
 
-static void _resmcore_utspace_free(void *alloc, seL4_Word type, seL4_Word size_bits, seL4_Word target)
+static void _resmcore_utspace_free(void *data, seL4_Word type, seL4_Word size_bits, seL4_Word target)
 {
 
 }
 
-static int _resmcore_utspace_try_alloc_from_pool(void *alloc, seL4_Word type, seL4_Word size_bits,
-                                                    uintptr_t paddr, bool can_use_dev, cspacepath_t *res)
+static int _resmcore_utspace_try_alloc_from_pool(void *data, seL4_Word type, seL4_Word size_bits, uintptr_t paddr, bool can_use_dev, cspacepath_t *res)
 {
     /**
      * 1. use @arg *res to determine if it is from pool: res = -1 means from pool (no base untyped)
@@ -61,24 +57,24 @@ static int _resmcore_utspace_try_alloc_from_pool(void *alloc, seL4_Word type, se
     return error;
 }
 
-static void _resmcore_utspace_try_free_from_pool(void *alloc, seL4_CPtr cptr)
+static void _resmcore_utspace_try_free_from_pool(void *data, seL4_CPtr cptr)
 {
     return;
 }
 
-static int _resmcore_cspace_is_from_pool(void *alloc, seL4_CPtr cptr)
+static int _resmcore_cspace_is_from_pool(void *data, seL4_CPtr cptr)
 {
     int error;
 
     return error;
 }
 
-void resmcore_make_vka(vka_t *vka, resmcore_t *alloc)
+void resmcore_make_vka(vka_t *vka, resmcore_t *data)
 {
     assert(vka);
-    assert(alloc);
+    assert(data);
 
-    vka->data = alloc;
+    vka->data = data;
     
     vka->cspace_alloc = &_resmcore_cspace_alloc;
     vka->cspace_make_path = &_resmcore_cspace_make_path;
